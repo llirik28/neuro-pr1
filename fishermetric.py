@@ -45,5 +45,3 @@ fisher_mean = (fisher_values_AB + fisher_values_BC + fisher_values_AC) / 3
 
 # Индексы двух самых информативных признаков
 top_2_indices = np.argsort(fisher_mean)[-2:]
-
-print("Фишеровская метрика между классами A и B:", fisher_values_AB)
