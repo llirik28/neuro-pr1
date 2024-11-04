@@ -43,5 +43,4 @@ fisher_values_AC = fisher_metric(class_A, class_C)
 # Среднее значение метрики Фишера для каждого признака по всем парам классов
 fisher_mean = (fisher_values_AB + fisher_values_BC + fisher_values_AC) / 3
 
-# Индексы двух самых информативных признаков
-top_2_indices = np.argsort(fisher_mean)[-2:]
+
