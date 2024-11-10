@@ -38,42 +38,40 @@ for stroka in range(len(spisok)):
 
 coordsx = [x[0] for x in coords]
 coordsy = [y[1] for y in coords]
-
 fig, ax = plt.subplots(figsize=(5, 5))
-for i in range(15):
-    plt.scatter(coordsx[i], coordsy[i], color='green')
-for i in range(15, 30):
-    plt.scatter(coordsx[i], coordsy[i], color='red')
-for i in range(30, 45):
-    plt.scatter(coordsx[i], coordsy[i], color='blue')
 
-xa = [(sum(coordsx[i] for i in range(q)) / q), (sum(coordsy[i] for i in range(q)) / q)]
-xbc = [(sum(coordsx[i] for i in range(q, q * 3)) / (q * 2)), (sum(coordsy[i] for i in range(q, q * 3)) / (q * 2))]
+
+xa = [(sum(coordsx[i] for i in range(q)) / q), (sum(coordsy[i] for i in range(q)) / q)] #класс а
+xbc = [(sum(coordsx[i] for i in range(q, q * 3)) / (q * 2)), (sum(coordsy[i] for i in range(q, q * 3)) / (q * 2))] #класс б и с, ошибка была в том, что делили на q, хотя обьектов то в 2 раза больше
 xa_xbc = [xa[0] - xbc[0], xa[1] - xbc[1]]
 xaxbc = [xa[0] + xbc[0], xa[1] + xbc[1]]
 z = 0.5 * (xa_xbc[0] * xaxbc[0] + xa_xbc[1] * xaxbc[1])
 y = [(z - xa_xbc[0] * x) / xa_xbc[1] for x in coordsx]
 
+for i in range(q * 3):
+    f = xa_xbc[0] * coordsx[i] + xa_xbc[1] * coordsy[i] - z
+    if f > 0:
+        plt.scatter(coordsx[i], coordsy[i], color='green')
+    else:
+        plt.scatter(coordsx[i], coordsy[i], color='red')
+
+plt.xlabel('Первая дискриминантная функция')
 plt.plot(coordsx, y)
 plt.grid()
 plt.show()
 
 
-
+#такая же хуйня только для двух классов
 top_2_indices = np.argsort(classx2)[-2:]
 coords = list()
 top_2_indices = [int(x) for x in top_2_indices.tolist()]
 for stroka in range(len(spisok)):
     object = spisok[stroka].tolist()
     coords.append([int(object[top_2_indices[0]]), int(object[top_2_indices[1]])])
-coordsx = [x[0] for x in coords[15:]]
-coordsy = [y[1] for y in coords[15:]]
+coordsx = [x[0] for x in coords[q:]]
+coordsy = [y[1] for y in coords[q:]]
 
 fig, ax = plt.subplots(figsize=(5, 5))
-for i in range(15):
-    plt.scatter(coordsx[i], coordsy[i], color='red')
-for i in range(15, 30):
-    plt.scatter(coordsx[i], coordsy[i], color='blue')
     
 xb = [(sum(coordsx[i] for i in range(q)) / q), (sum(coordsy[i] for i in range(q)) / q)]
 xc = [(sum(coordsx[i] for i in range(q, q * 2)) / q), (sum(coordsy[i] for i in range(q, q * 2)) / q)]
@@ -81,7 +79,14 @@ xb_xc = [xb[0] - xc[0], xb[1] - xc[1]]
 xbxc = [xb[0] + xc[0], xb[1] + xc[1]]
 z = 0.5 * (xb_xc[0] * xbxc[0] + xb_xc[1] * xbxc[1])
 y = [(z - xb_xc[0] * x) / xb_xc[1] for x in coordsx]
+for i in range(q * 2):
+    f = xb_xc[0] * coordsx[i] + xb_xc[1] * coordsy[i] - z
+    if f > 0:
+        plt.scatter(coordsx[i], coordsy[i], color='green')
+    else:
+        plt.scatter(coordsx[i], coordsy[i], color='red')
 
+plt.xlabel('вторая дискриминантная функция')
 plt.plot(coordsx, y)
 plt.grid()
 plt.show()
