@@ -47,16 +47,19 @@ xa_xbc = [xa[0] - xbc[0], xa[1] - xbc[1]]
 xaxbc = [xa[0] + xbc[0], xa[1] + xbc[1]]
 z = 0.5 * (xa_xbc[0] * xaxbc[0] + xa_xbc[1] * xaxbc[1])
 y = [(z - xa_xbc[0] * x) / xa_xbc[1] for x in coordsx]
-
+count1, count2 = True, True
 for i in range(q * 3):
     f = xa_xbc[0] * coordsx[i] + xa_xbc[1] * coordsy[i] - z
     if f > 0:
-        plt.scatter(coordsx[i], coordsy[i], color='green')
+        plt.scatter(coordsx[i], coordsy[i], color='green', label='class A' if count1 else '')
+        count1 = False
     else:
-        plt.scatter(coordsx[i], coordsy[i], color='red')
+        plt.scatter(coordsx[i], coordsy[i], color='red', label='classes B & C' if count2 else '')
+        count2 = False
 
 plt.xlabel('Первая дискриминантная функция')
 plt.plot(coordsx, y)
+plt.legend()
 plt.grid()
 plt.show()
 
@@ -79,14 +82,18 @@ xb_xc = [xb[0] - xc[0], xb[1] - xc[1]]
 xbxc = [xb[0] + xc[0], xb[1] + xc[1]]
 z = 0.5 * (xb_xc[0] * xbxc[0] + xb_xc[1] * xbxc[1])
 y = [(z - xb_xc[0] * x) / xb_xc[1] for x in coordsx]
+count1, count2 = True, True
 for i in range(q * 2):
     f = xb_xc[0] * coordsx[i] + xb_xc[1] * coordsy[i] - z
     if f > 0:
-        plt.scatter(coordsx[i], coordsy[i], color='green')
+        plt.scatter(coordsx[i], coordsy[i], color='green', label='class B' if count1 else '')
+        count1 = False
     else:
-        plt.scatter(coordsx[i], coordsy[i], color='red')
+        plt.scatter(coordsx[i], coordsy[i], color='red', label='class C' if count2 else '')
+        count2 = False
 
 plt.xlabel('вторая дискриминантная функция')
 plt.plot(coordsx, y)
 plt.grid()
+plt.legend()
 plt.show()
