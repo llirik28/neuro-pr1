@@ -15,7 +15,7 @@ def fisher_metric(class1, class2, class3):
     
     return fisher_metric3, fisher_metric2 #выводим метрику фишера для 3 классов и для двух
 
-spisok = np.genfromtxt('Таблица.csv', delimiter=';')
+spisok = np.genfromtxt('x.csv', delimiter=';')
 cls = 3 # заменил нахуй ввод 3 классов, устал уже от него
 q = len(spisok)//cls
 classA, classB, classC = list(), list(), list()
