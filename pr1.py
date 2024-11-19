@@ -6,7 +6,7 @@ def fisher_metric(clas):
     return (mean)**2 / (var)
 
 spisok = np.array(np.genfromtxt('Таблица.csv', delimiter=';'))
-cls = int(input('Введите количество классов: '))
+cls = 3
 q = len(spisok)//cls
 classA = list()
 
