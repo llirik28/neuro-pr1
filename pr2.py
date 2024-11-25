@@ -29,7 +29,6 @@ for i in range(len(classA[0])):
             exit()
     
     for s in range(len(classA)):
-        check = True
         object = classA[s].tolist()
         for sign_check in signs:
             if sign_check in object:
@@ -38,7 +37,6 @@ for i in range(len(classA[0])):
             classes.append('classA')
     
     for s in range(len(classB)):
-        check = True
         object = classB[s].tolist()
         for sign_check in signs:
             if sign_check in object:
@@ -47,7 +45,6 @@ for i in range(len(classA[0])):
             classes.append('classB')
     
     for s in range(len(classC)):
-        check = True
         object = classC[s].tolist()
         for sign_check in signs:
             if sign_check in object:
