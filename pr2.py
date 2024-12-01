@@ -18,7 +18,7 @@ for i in range(len(classA[0])):
     classes = list()
     while True:
         try:
-            sign = int(input())
+            sign = int(input('Введите признак: '))
             if sign < 0:
                 print('неверный ввод')
                 exit()
@@ -34,7 +34,7 @@ for i in range(len(classA[0])):
             if sign_check in object:
                 object.remove(sign_check)
         if len(object) == len(classA[0]) - len(signs):
-            classes.append('classA')
+            classes.append('Сlass A')
     
     for s in range(len(classB)):
         object = classB[s].tolist()
@@ -42,7 +42,7 @@ for i in range(len(classA[0])):
             if sign_check in object:
                 object.remove(sign_check)
         if len(object) == len(classA[0]) - len(signs):
-            classes.append('classB')
+            classes.append('Сlass B')
     
     for s in range(len(classC)):
         object = classC[s].tolist()
@@ -50,7 +50,7 @@ for i in range(len(classA[0])):
             if sign_check in object:
                 object.remove(sign_check)
         if len(object) == len(classA[0]) - len(signs):
-            classes.append('classC')
+            classes.append('Сlass C')
 
 
     if len(set(classes)) == 3:
