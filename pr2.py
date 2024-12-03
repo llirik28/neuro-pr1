@@ -34,7 +34,7 @@ for i in range(len(classA[0])):
             if sign_check in object:
                 object.remove(sign_check)
         if len(object) == len(classA[0]) - len(signs):
-            classes.append('Сlass A')
+            classes.append('Class A')
     
     for s in range(len(classB)):
         object = classB[s].tolist()
@@ -42,7 +42,7 @@ for i in range(len(classA[0])):
             if sign_check in object:
                 object.remove(sign_check)
         if len(object) == len(classA[0]) - len(signs):
-            classes.append('Сlass B')
+            classes.append('Class B')
     
     for s in range(len(classC)):
         object = classC[s].tolist()
@@ -50,16 +50,27 @@ for i in range(len(classA[0])):
             if sign_check in object:
                 object.remove(sign_check)
         if len(object) == len(classA[0]) - len(signs):
-            classes.append('Сlass C')
-
+            classes.append('Class C')
 
     if len(set(classes)) == 3:
-        print('Class A, Class B or Class C')
-    elif 'classA' in classes and 'classC' in classes:
+        if classes.count('Class A') > classes.count('Class B') and classes.count('Class A') > classes.count('Class C'):
+            print('Class A')
+        elif classes.count('Class B') > classes.count('Class A') and classes.count('Class B') > classes.count('Class C'):
+            print('Class B')
+        elif classes.count('Class C') > classes.count('Class A') and classes.count('Class C') > classes.count('Class B'):
+            print('Class C')
+        elif classes.count('Class A') == classes.count('Class C'):
+            print('Not Class B')
+        elif classes.count('Class B') == classes.count('Class C'):
+            print('Not Class A')
+        elif classes.count('Class A') == classes.count('Class B'):
+            print('Not Class C')
+        else: print('Class A or Class B or Class C')
+    elif ('Class A' in classes and 'Class C' in classes):
         print('Not Class B')
-    elif 'classA' in classes and 'classB' in classes:
+    elif ('Class A' in classes and 'Class B' in classes):
         print('Not Class C')
-    elif 'classB' in classes and 'classC' in classes:
+    elif ('Class B' in classes and 'Class C' in classes):
         print('Not Class A')
     elif len(set(classes)) == 1:
         print(*set(classes))
